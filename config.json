@@ -1,0 +1,9 @@
+{
+  "product": "MelonityPRO",
+  "installUrl": "https://ipa.authtool.app/api/install/6a4c4dcdc0c6d194ea2aee16",
+  "websiteName": "IPA Store",
+  "websiteUrl": "https://ipa-drop.com",
+  "sellerContact": "@melonityios",
+  "apiBase": "https://ske2.onrender.com",
+  "lifetimeDurations": ["365d"]
+}

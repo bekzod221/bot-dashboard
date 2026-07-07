@@ -1,0 +1,5 @@
+node_modules
+.env
+token.txt
+serviceAccount.json
+redeemed.json

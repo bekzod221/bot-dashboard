@@ -1,0 +1,17 @@
+{
+  "name": "melonitybot",
+  "version": "1.0.0",
+  "description": "Telegram activator bot for MelonityPRO — grants website subscriptions from activation keys.",
+  "type": "module",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.2",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}

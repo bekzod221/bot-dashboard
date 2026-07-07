@@ -1,0 +1,17 @@
+# Render Background Worker for the MelonityPRO activator bot.
+# The bot uses Telegram long-polling (no inbound HTTP), so it must be a "worker", not a "web" service.
+services:
+  - type: worker
+    name: melonitybot
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node src/bot.js
+    autoDeploy: true
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
+      - key: SHOWALL_SECRET
+        sync: false
