@@ -5,6 +5,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import http from "node:http";
 import TelegramBot from "node-telegram-bot-api";
 import { findUserByEmail, grantSubscription, getRedemption, recordRedemption, config } from "./firebase.js";
 import { lookupKey, resolvePlan } from "./keysdb.js";
@@ -224,3 +225,15 @@ bot.on("polling_error", (e) => console.error("polling_error:", e.code, e.message
 
 console.log("MelonityPRO activator bot is running.");
 console.log(`Validating keys against: ${config.apiBase}/showall`);
+
+// Render Web Services require an open HTTP port. The bot itself only long-polls Telegram
+// (no inbound traffic), so we bind a tiny health endpoint when PORT is provided. On a
+// Background Worker PORT is unset and this is skipped.
+if (process.env.PORT) {
+  http
+    .createServer((req, res) => {
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end("MelonityPRO activator bot: alive");
+    })
+    .listen(process.env.PORT, () => console.log(`health server listening on :${process.env.PORT}`));
+}
